@@ -3,6 +3,6 @@ joblib
 pandas==1.3.3
 numpy==1.19.5
 sklearn
-uvicorn==1.15.0
+uvicorn
 fastapi==0.70.0
 pydantic
