@@ -13,8 +13,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import OneHotEncoder
 from pydantic import BaseModel
 
-DATAPATH = "./data/adult.data"
-TESTPATH = "./data/adult.test"
+DATAPATH = "../data/adult.data"
+TESTPATH = "../data/adult.test"
 
 
 class Income(BaseModel):
@@ -76,7 +76,7 @@ class incomemodel:
     def __init__(self):
         self.datatab = pd.read_csv(DATAPATH, header=None)
         self.test = pd.read_csv(TESTPATH, skiprows=[0], header=None)
-        self.mname = "income_classifier.joblib"
+        self.mname = "../model/income_classifier.joblib"
         try:
             self.data, self.data_test = self.preprocessing()
             self.pipe = joblib.load(self.mname)
