@@ -13,8 +13,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import OneHotEncoder
 from pydantic import BaseModel
 
-DATAPATH = "./app/data/adult.data"
-TESTPATH = "./app/data/adult.test"
+DATAPATH = "./data/adult.data"
+TESTPATH = "./data/adult.test"
 
 
 class Income(BaseModel):

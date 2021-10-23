@@ -5,7 +5,7 @@ author: Yan-ting Liau
 date: October 16, 2021
 """
 import pandas as pd
-from .predict import incomemodel
+from ..predict import incomemodel
 
 model = incomemodel()
 
