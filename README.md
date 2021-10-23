@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # censusclassificationAPI
 This project aims for predicting whether income exceeds $50K/yr based on census data >50K, <=50K.
 
@@ -68,6 +67,3 @@ Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
 
 
 
-=======
-# censusclassificationAPI
->>>>>>> parent of 16bc9cc... updates
