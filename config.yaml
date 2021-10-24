@@ -11,8 +11,9 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8] # You can build against multiple Python versions.
+
     steps:
-    - name: Call REPO
+    - name: Checkout
       uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
     - name: Set up Python ${{ matrix.python-version }} # Name of an action that sets up Python.
       uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
@@ -39,12 +40,7 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest # Final action which runs pytest. If any test fails, then this Action fails.
-      uses: actions/checkout@v2
-      with:
-          repository: {{ github.workspace }}/vickyting0910/censusclassificationAPI/
-          path: censusclassificationAPI/
       run: |
-        working-directory: ./censusclassificationAPI/
         pytest
 
 
