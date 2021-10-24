@@ -1,1 +1,1 @@
-{ "DATAPATH": "/github/workspace/~censusclassificationAPI/data/adult.data", "TESTPATH": "/github/workspace/~censusclassificationAPI/data/adult.test"}
+{ "DATAPATH": "data/adult.data", "TESTPATH": "data/adult.test"}
