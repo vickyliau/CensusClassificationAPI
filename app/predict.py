@@ -76,7 +76,7 @@ class incomemodel:
     def __init__(self):
         self.datatab = pd.read_csv(DATAPATH, header=None)
         self.test = pd.read_csv(TESTPATH, skiprows=[0], header=None)
-        self.mname = "income_classifier.joblib"
+        self.mname = "./app/model/income_classifier.joblib"
         try:
             self.data, self.data_test = self.preprocessing()
             self.pipe = joblib.load(self.mname)
@@ -123,6 +123,7 @@ class incomemodel:
         ]
         data = self.datatab
         data.columns = headers
+        data.to_csv('./app/data/training_clean.csv', index=False)
         data["income"] = data["income"].replace(" <=50K", 0)
         data["income"] = data["income"].replace(" >50K", 1)
         cdf = pd.DataFrame(
@@ -134,9 +135,11 @@ class incomemodel:
             .get_feature_names_out(),
         )
         data = data.select_dtypes(include=[int]).join(cdf, how="outer")
+        
 
         data_test = self.test
         data_test.columns = headers
+        data_test.to_csv('./app/data/testing_clean.csv', index=False)
         data_test["income"] = data["income"].replace(" <=50K", 0)
         data_test["income"] = data["income"].replace(" >50K", 1)
         cdft = pd.DataFrame(
@@ -149,8 +152,10 @@ class incomemodel:
         )
         data_test = data_test.select_dtypes(include=[int])
         data_test = data_test.join(cdft, how="outer")
-
+        
         data, data_test = match_categories(data, data_test)
+        data.to_csv('./app/data/training_hotencoding.csv', index=False)
+        data_test.to_csv('./app/data/testing_hotencoding.csv', index=False)
         return data, data_test
 
     def train(self):
@@ -167,7 +172,9 @@ class incomemodel:
         dep_variable = indep_variable.pop("income")
         pipe = RandomForestClassifier(max_depth=2, random_state=0)
         pipe.fit(indep_variable, dep_variable)
-
+        predtab=self.data
+        predtab['pred']=pipe.predict(indep_variable)
+        predtab.to_csv('./app/data/training_pred.csv',index=False)
         # joblib.dump(pipe, 'income_classifier.joblib')
         return pipe
 
@@ -188,6 +195,9 @@ class incomemodel:
         indep_testvariable = self.data_test.copy()
         dep_testvariable = indep_testvariable.pop("income")
         pred = self.pipe.predict(indep_testvariable)
+        predtab=self.data_test
+        predtab['pred']=pred
+        predtab.to_csv('./app/data/testing_pred.csv',index=False)
         return pred, dep_testvariable
 
     def evaluation(self):
