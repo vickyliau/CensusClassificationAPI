@@ -1,15 +1,15 @@
 stages:
   run-api:
-    cmd: uvicorn main:app --reload
+    cmd: uvicorn app.main:app --reload
     deps:
-    - ./data/adult.data
-    - ./data/adult.test
+    - ./app/data/adult.data
+    - ./app/data/adult.test
     outs:
-    - ./model/income_classifier.joblib
-    - ./data/training_clean.csv
-    - ./data/training_hotencoding.csv
-    - ./data/testing_clean.csv
-    - ./data/testing_hotencoding.csv
-    - ./data/training_pred.csv
-    - ./data/testing_pred.csv
+    - ./app/model/income_classifier.joblib
+    - ./app/data/training_clean.csv
+    - ./app/data/training_hotencoding.csv
+    - ./app/data/testing_clean.csv
+    - ./app/data/testing_hotencoding.csv
+    - ./app/data/training_pred.csv
+    - ./app/data/testing_pred.csv
 

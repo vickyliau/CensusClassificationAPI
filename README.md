@@ -6,8 +6,8 @@ This project aims for predicting whether income exceeds $50K/yr based on census 
 
 Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
 
-### Training Data: data/adult.data
-### Testing Data: data/adult.test
+### Training Data: app/data/adult.data
+### Testing Data: app/data/adult.test
 
 ## Set up Environment
 
@@ -38,7 +38,7 @@ The ML pipeline is defined by predict.py
 
 API is defined by main.py
 
-### Step1: Type in uvicorn main:app --reload in the terminal
+### Step1: Type in uvicorn app.main:app --reload in the terminal
 ### Step2: Go to http://127.0.0.1:8000/docs
 ### Step3: Default/POST/income_prediction
 ### Step4: Click Try it out

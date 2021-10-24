@@ -7,7 +7,7 @@ date: October 16, 2021
 import pandas as pd
 import sys
 import os
-from predict import incomemodel
+from app.predict import incomemodel
 
 model = incomemodel()
 
