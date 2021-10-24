@@ -1,1 +1,8 @@
 /adult.data
+/adult.test
+/training_clean.csv
+/training_hotencoding.csv
+/testing_clean.csv
+/testing_hotencoding.csv
+/training_pred.csv
+/testing_pred.csv
