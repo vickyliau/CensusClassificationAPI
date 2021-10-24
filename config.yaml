@@ -11,7 +11,6 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8] # You can build against multiple Python versions.
-
     steps:
     - name: Call REPO
       uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
@@ -45,6 +44,7 @@ jobs:
           repository: {{ github.workspace }}/vickyting0910/censusclassificationAPI/
           path: censusclassificationAPI/
       run: |
+        working-directory: ./censusclassificationAPI/
         pytest
 
 
