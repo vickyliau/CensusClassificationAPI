@@ -13,8 +13,8 @@ jobs:
         python-version: [3.7, 3.8] # You can build against multiple Python versions.
 
     steps:
-    - uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
-    - uses: iterative/setup-dvc@v1
+    - name: Call REPO
+      uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
     - name: Set up Python ${{ matrix.python-version }} # Name of an action that sets up Python.
       uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
       with:
@@ -29,8 +29,8 @@ jobs:
       with:
         role-to-assume: arn:aws:sts::764994897703:role/my-github-actions-role
         aws-region: us-east-1
-    - uses: actions/checkout@v2
-    - uses: iterative/setup-dvc@v1
+    - name: Check DVC
+      uses: iterative/setup-dvc@v1
         with:
             version: '1.0.1'
     - name: Lint with flake8
