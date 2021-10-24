@@ -14,8 +14,8 @@ from sklearn.preprocessing import OneHotEncoder
 from pydantic import BaseModel
 
 ############## File Input ##############
-DATAPATH = "./app/data/adult.data"
-TESTPATH = "./app/data/adult.test"
+DATAPATH = "app/data/adult.data"
+TESTPATH = "app/data/adult.test"
 
 ############## Prediction Class ##############
 
