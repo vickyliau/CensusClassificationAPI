@@ -195,7 +195,7 @@ class incomemodel:
         indep_testvariable = self.data_test.copy()
         dep_testvariable = indep_testvariable.pop("income")
         pred = self.pipe.predict(indep_testvariable)
-        predtab=self.data_test
+        predtab=indep_testvariable
         predtab['pred']=pred
         predtab.to_csv('./app/data/testing_pred.csv',index=False)
         return pred, dep_testvariable
