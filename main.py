@@ -7,7 +7,7 @@ date: October 16, 2021
 
 from fastapi import FastAPI
 import uvicorn
-from pred.predict import Income, incomemodel
+from predict import Income, incomemodel
 
 app = FastAPI()
 

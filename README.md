@@ -6,8 +6,8 @@ This project aims for predicting whether income exceeds $50K/yr based on census 
 
 Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
 
-### Training Data: .data/adult.data
-### Testing Data: .data/adult.test
+### Training Data: data/adult.data
+### Testing Data: data/adult.test
 
 ## Set up Environment
 
@@ -32,7 +32,7 @@ Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
 
 ## ML Pipeline
 
-The ML pipeline is defined by .pred/predict.py
+The ML pipeline is defined by predict.py
 
 ## API Instruction
 

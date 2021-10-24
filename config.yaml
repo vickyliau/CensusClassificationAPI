@@ -14,6 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
+    - uses: iterative/setup-dvc@v1
     - name: Set up Python ${{ matrix.python-version }} # Name of an action that sets up Python.
       uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
       with:
