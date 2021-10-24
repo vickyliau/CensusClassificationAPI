@@ -18,8 +18,8 @@ from pydantic import BaseModel
 with open('config.json','r') as f:
     config = json.load(f) 
 
-input_folder_path = config['DATAPATH']
-output_folder_path = config['TESTPATH']
+DATAPATH = config['DATAPATH']
+TESTPATH = config['TESTPATH']
 
 ############## Prediction Class ##############
 
