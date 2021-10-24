@@ -1,0 +1,33 @@
+schema: '2.0'
+stages:
+  run-api:
+    cmd: uvicorn app.main:app --reload
+    deps:
+    - path: ./app/data/adult.data
+      md5: 5d7c39d7b8804f071cdd1f2a7c460872
+      size: 3974305
+    - path: ./app/data/adult.test
+      md5: 35238206dfdf7f1fe215bbb874adecdc
+      size: 2003153
+    outs:
+    - path: ./app/data/testing_clean.csv
+      md5: 6faf498ffb843c21a9772cd1c97f2c19
+      size: 1828042
+    - path: ./app/data/testing_hotencoding.csv
+      md5: 94d4ef7414725e992518c620e8630dd0
+      size: 6934174
+    - path: ./app/data/testing_pred.csv
+      md5: 398663fdaa2938c75d0ba17c6690e7dd
+      size: 6999338
+    - path: ./app/data/training_clean.csv
+      md5: 7dd879f04347cb06ef5ed6cb7c0fbdfd
+      size: 3656691
+    - path: ./app/data/training_hotencoding.csv
+      md5: 8ed84316c111d1df588bf779a8b2d5bd
+      size: 13996214
+    - path: ./app/data/training_pred.csv
+      md5: ba724bf780a8ee6da153b5b1e20e6f04
+      size: 14061341
+    - path: ./app/model/income_classifier.joblib
+      md5: 314b237336b8340976bdbd4cf2048f66
+      size: 88710
