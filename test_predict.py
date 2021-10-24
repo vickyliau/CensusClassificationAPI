@@ -7,9 +7,9 @@ date: October 16, 2021
 import pandas as pd
 import sys
 import os
-currentdir = os.path.dirname(os.path.realpath('test_predict.py'))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
+#currentdir = os.path.dirname(os.path.realpath('test_predict.py'))
+#parentdir = os.path.dirname(currentdir)
+#sys.path.append(parentdir)
 from pred.predict import incomemodel
 
 model = incomemodel()
