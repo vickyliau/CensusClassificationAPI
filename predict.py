@@ -8,14 +8,20 @@ date: October 16, 2021
 import joblib
 import numpy as np
 import pandas as pd
+import json
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import OneHotEncoder
 from pydantic import BaseModel
 
-DATAPATH = "./data/adult.data"
-TESTPATH = "./data/adult.test"
+############## File Input ##############
+with open('config.json','r') as f:
+    config = json.load(f) 
 
+input_folder_path = config['DATAPATH']
+output_folder_path = config['TESTPATH']
+
+############## Prediction Class ##############
 
 class Income(BaseModel):
     """
