@@ -1,4 +1,0 @@
-[core]
-    remote = data
-['remote "data"']
-    url = s3://vicky-apiproject/data

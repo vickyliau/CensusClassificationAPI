@@ -5,8 +5,6 @@ author: Yan-ting Liau
 date: October 16, 2021
 """
 import pandas as pd
-import sys
-import os
 from app.predict import incomemodel
 
 model = incomemodel()
@@ -104,7 +102,7 @@ def test_trainingpred_two_classes():
     classes = model.train().predict(indep_variable)
     assert len(set(classes)) > 1
 
-'''
+
 def test_testingpred_two_classes():
     """
     Test whether two classes are successfully predicted in testing data
@@ -120,4 +118,3 @@ def test_testingpred_two_classes():
     indep_variable.pop("income")
     classes = model.test_val()[0]
     assert len(set(classes)) > 1
-'''
