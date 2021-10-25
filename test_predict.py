@@ -5,10 +5,14 @@ author: Yan-ting Liau
 date: October 16, 2021
 """
 import pandas as pd
-from app.predict import incomemodel
+from app.predict import Income, incomemodel
+
+from fastapi.testclient import TestClient
 
 model = incomemodel()
 
+from app.main import app
+client = TestClient(app)
 
 def test_preprocessing():
 
@@ -118,3 +122,27 @@ def test_testingpred_two_classes():
     indep_variable.pop("income")
     classes = model.test_val()[0]
     assert len(set(classes)) > 1
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Welcom to Income Prediction API"}
+
+def test_income_pred_api(inputincome = { "age": 30, "workclass": "State-gov",
+    "fnlwgt": 77516, "education": "Masters", "education_num": 15,
+    "marital_status": "Never-married", "occupation": "Prof-specialty",
+    "relationship": "Not-in-family", "race": "White", "sex": "Female",
+    "capital_gain": 2174, "capital_loss": 0, "hours_per_week": 40,
+    "native_country": "United-States", "income": 1 }):
+    response = client.post("/income_prediction", json=inputincome)
+    assert response.status_code == 200
+
+def test_income_pred_type():
+    response = client.get("/income_prediction")
+    assert type(response.json()) == type({
+        "id": "idid",
+        "name": "namename",
+        "description": "descriptiondescription",
+    })
+
+

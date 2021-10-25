@@ -200,6 +200,31 @@ class incomemodel:
         predtab.to_csv('./app/data/testing_pred.csv',index=False)
         return pred, dep_testvariable
 
+    def slice_performance(self):
+        """
+        function that computes the performance metrics when the value 
+        of a given feature is held fixed. E.g. for education, it would 
+        print out the model metrics for each slice of data that has a 
+        particular value for education. You should have one set of outputs
+        for every single unique value in education.
+        input:
+                data: pandas dataframe
+                    training data
+        output:
+                pipe: sklearn model output
+        """
+        indep_variable = self.data.copy()
+        sex=[i for i in indep_variable.columns if 'sex' in i]
+        for i in range(len(sex)):
+            tab = indep_variable[indep_variable[sex[i]]==1]
+
+            dep = tab.pop("income")
+            pipe_sex = RandomForestClassifier(max_depth=2, random_state=0)
+            pipe_sex.fit(tab, dep)
+            pred_sex = pipe_sex.predict(tab)
+            print (sex[i]+': '+str(accuracy_score(dep, pred_sex)))
+
+
     def evaluation(self):
         """
         Training the model
