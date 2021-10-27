@@ -7,3 +7,4 @@ uvicorn
 fastapi==0.70.0
 pydantic
 requests
+gunicorn
