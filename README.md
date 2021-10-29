@@ -62,7 +62,6 @@ API is defined by main.py
   "income": 1
 }
 
-
 ### Step6: Click Execute
 ### Step7: Got to Server response for results
 
@@ -78,7 +77,7 @@ The CI is defined by config.yaml
 
 https://dvc.org/
 
-The pipelie is defined by dvc.yaml
+The pipelie is defined by dvc.yaml, and the versioning is storted by dvc.lock
 
 ### Deployment if new data or model is available by typing in dvc repro
 ### Directed Acyclic Graph by typing in dvc dag, defined by dvc.yaml
@@ -91,12 +90,15 @@ The pipelie is defined by dvc.yaml
 
 https://dashboard.heroku.com/apps
 
-The API is at https://census-income-pred.herokuapp.com/
+The app is started by Procfile
+
+The API is deployed at https://census-income-pred.herokuapp.com/
 
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/continuous_deloyment.png)
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/screenshot_live_get.png)
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/liveAPI.png)
 
+### Live API Testing
 
 import requests
 
@@ -109,8 +111,6 @@ print(response.status_code)
 
 print(response.json())
 
-
-r = requests.post('https://census-income-pred.herokuapp.com/income_prediction')
 
 data = { "age": 30, "workclass": "State-gov", "fnlwgt": 77516, "education": "Masters", "education_num": 15, "marital_status": "Never-married", "occupation": "Prof-specialty", "relationship": "Not-in-family", "race": "White", "sex": "Female", "capital_gain": 2174, "capital_loss": 0, "hours_per_week": 40, "native_country": "United-States", "income": 1 }
 
