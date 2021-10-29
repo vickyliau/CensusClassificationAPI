@@ -80,3 +80,12 @@ The CI is defined by config.yaml
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/dvcdag.png)
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/dvclock.png)
 
+
+## API Deployment
+
+![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/continuous_deloyment.png)
+![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/screenshot live_get.png)
+![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/liveAPI.png)
+
+
+
