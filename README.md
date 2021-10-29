@@ -1,4 +1,4 @@
-# censusclassificationAPI
+# Deploying a Machine Learning Model on Heroku with FastAPI
 This project aims for predicting whether income exceeds $50K/yr based on census data >50K, <=50K.
 
 
@@ -32,9 +32,9 @@ Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
 
 ## ML Pipeline
 
-The ML pipeline is defined by predict.py
+The ML pipeline is defined by app.predict.py
 
-## API Instruction
+## API Instruction using Local Host
 
 API is defined by main.py
 
@@ -66,13 +66,19 @@ API is defined by main.py
 ### Step6: Click Execute
 ### Step7: Got to Server response for results
 
-## Continuous Integration 
+## API Continuous Integration using GitHub Actions
+
+https://github.com/features/actions
 
 The CI is defined by config.yaml
 
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/firstCI.png)
 
-## Data Versioning
+## Data Versioning using Data Version Control
+
+https://dvc.org/
+
+The pipelie is defined by dvc.yaml
 
 ### Deployment if new data or model is available by typing in dvc repro
 ### Directed Acyclic Graph by typing in dvc dag, defined by dvc.yaml
@@ -81,11 +87,28 @@ The CI is defined by config.yaml
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/dvclock.png)
 
 
-## API Deployment
+## API Continuous Deployment using Heroku
+
+https://dashboard.heroku.com/apps
+
+The API is at https://census-income-pred.herokuapp.com/
 
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/continuous_deloyment.png)
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/screenshot live_get.png)
 ![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/liveAPI.png)
 
+
+import requests
+import json
+
+response = requests.get('https://census-income-pred.herokuapp.com/')
+print(response.status_code)
+print(response.json())
+
+r = requests.post('https://census-income-pred.herokuapp.com/income_prediction')
+data = { "age": 30, "workclass": "State-gov", "fnlwgt": 77516, "education": "Masters", "education_num": 15, "marital_status": "Never-married", "occupation": "Prof-specialty", "relationship": "Not-in-family", "race": "White", "sex": "Female", "capital_gain": 2174, "capital_loss": 0, "hours_per_week": 40, "native_country": "United-States", "income": 1 }
+r = requests.post('https://census-income-pred.herokuapp.com/income_prediction', data=json.dumps(data))
+print(r.status_code)
+print(r.json())
 
 
