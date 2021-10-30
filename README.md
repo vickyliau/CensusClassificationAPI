@@ -2,37 +2,60 @@
 This project aims for predicting whether income exceeds $50K/yr based on census data >50K, <=50K.
 
 
-## Data
 
-Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
-
-### Training Data: app/data/adult.data
-### Testing Data: app/data/adult.test
 
 ## Set up Environment
 
 ### pip install -r /path/to/requirements.txt
 
-## Attribute Information:
-
-#### age: continuous.
-#### workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
-#### fnlwgt: continuous.
-#### education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
-#### education-num: continuous.
-#### marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
-#### occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
-#### relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.
-#### race: White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black.
-#### sex: Female, Male.
-#### capital-gain: continuous.
-#### capital-loss: continuous.
-#### hours-per-week: continuous.
-#### native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
-
 ## ML Pipeline
 
 The ML pipeline is defined by app.predict.py
+
+## Model Card
+
+### Model Details
+
+The model is built by random forest, defined by max_depth=2, random_state=0
+The API is at https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier
+
+### Intended use for the model and the intended users
+
+The model is used for predicting income based on census or person data for users who expect to know how to earn >50K.  
+
+### Metrics
+
+#### Overall Performance: accuracy: 0.7599; fbeta: 0.00627; recall: 0.00128; precision: 0.227272
+
+### Data
+
+Census Income Data Set/ https://archive.ics.uci.edu/ml/datasets/census+income
+
+#### Training Data: app/data/adult.data
+#### Testing Data: app/data/adult.test
+#### Attribute Information
+
+##### age: continuous.
+##### workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
+##### fnlwgt: continuous.
+##### education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
+##### education-num: continuous.
+##### marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
+##### occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
+##### relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.
+##### race: White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black.
+##### sex: Female, Male.
+##### capital-gain: continuous.
+##### capital-loss: continuous.
+##### hours-per-week: continuous.
+##### native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
+
+### Bias inherent either in data or model
+
+Potentially, the model may be biased by sex. 
+
+#### Accuracy of Female Slice: 0.8905
+#### Accuracy of Male Slice: 0.7151
 
 ## API Instruction using Local Host
 
@@ -64,6 +87,8 @@ API is defined by main.py
 
 ### Step6: Click Execute
 ### Step7: Got to Server response for results
+
+![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/example.png)
 
 ## API Continuous Integration using GitHub Actions
 

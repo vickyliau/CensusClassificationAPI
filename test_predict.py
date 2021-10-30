@@ -145,4 +145,11 @@ def test_income_pred_type():
         "description": "descriptiondescription",
     })
 
-
+def test_income_pred_value(inputincome = { "age": 30, "workclass": "State-gov",
+    "fnlwgt": 77516, "education": "Masters", "education_num": 15,
+    "marital_status": "Never-married", "occupation": "Prof-specialty",
+    "relationship": "Not-in-family", "race": "White", "sex": "Female",
+    "capital_gain": 2174, "capital_loss": 0, "hours_per_week": 40,
+    "native_country": "United-States", "income": 1 }):
+    response = client.post("/income_prediction", json=inputincome)
+    assert response.json()['prediction'] == 0

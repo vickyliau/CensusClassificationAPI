@@ -9,7 +9,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, fbeta_score, recall_score, precision_score
 from sklearn.preprocessing import OneHotEncoder
 from pydantic import BaseModel
 
@@ -219,10 +219,11 @@ class incomemodel:
             tab = indep_variable[indep_variable[sex[i]]==1]
 
             dep = tab.pop("income")
-            pipe_sex = RandomForestClassifier(max_depth=2, random_state=0)
-            pipe_sex.fit(tab, dep)
-            pred_sex = pipe_sex.predict(tab)
+            #pipe_sex = RandomForestClassifier(max_depth=2, random_state=0)
+            #pipe_sex.fit(tab, dep)
+            pred_sex = self.pipe.predict(tab)
             print (sex[i]+': '+str(accuracy_score(dep, pred_sex)))
+            np.savetxt('./app/data/'+str(sex[i])+'_slice.txt', pred_sex)
 
 
     def evaluation(self):
@@ -239,9 +240,11 @@ class incomemodel:
         """
         # indep_testvariable = self.data_test.copy()
         # dep_testvariable = indep_testvariable.pop('income')
-        score = accuracy_score(self.dep_testvariable, self.prob)
-
-        return score
+        accuracy = accuracy_score(self.dep_testvariable, self.prob)
+        fbeta = fbeta_score(self.dep_testvariable, self.prob,beta=0.5)
+        recall = recall_score(self.dep_testvariable, self.prob)
+        precision = precision_score(self.dep_testvariable, self.prob)
+        return accuracy, fbeta, recall, precision
 
     def predict_income(
         self,
@@ -315,3 +318,11 @@ class incomemodel:
         score = accuracy_score(val, prediction)
         print([income, int(prediction), probability, score])
         return income, int(prediction), probability, score
+
+if __name__ == "__main__":
+    model = incomemodel()
+    accuracy, fbeta, recall, precision = model.evaluation
+    print ('accuracy'+str(accuracy))
+    print ('fbeta'+str(fbeta))
+    print ('recall'+str(recall))
+    print ('precision'+str(precision))
