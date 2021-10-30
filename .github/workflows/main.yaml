@@ -17,11 +17,6 @@ jobs:
       uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: arn:aws:sts::764994897703:role/my-github-actions-role
-        aws-region: us-east-1
     - name: Install dependencies # The first step that isn't just calling another action.
       run: |
         python -m pip install --upgrade pip # Upgrade pip to the latest version.
