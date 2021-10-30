@@ -102,7 +102,7 @@ The CI is defined by config.yaml
 
 https://dvc.org/
 
-The pipelie is defined by dvc.yaml, and the versioning is storted by dvc.lock
+The pipeline is defined by dvc.yaml, and the versioning is stored by dvc.lock
 
 ### Deployment if new data or model is available by typing in dvc repro
 ### Directed Acyclic Graph by typing in dvc dag, defined by dvc.yaml
