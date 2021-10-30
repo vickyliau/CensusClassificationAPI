@@ -12,15 +12,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2 # Calling a pre-built GitHub Action which allows your Action to access your repository.
+    - uses: iterative/setup-dvc@v1
     - name: Set up Python ${{ matrix.python-version }} # Name of an action that sets up Python.
       uses: actions/setup-python@v2 # A pre-built GitHub Action that sets up a Python environment.
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:sts::764994897703:role/my-github-actions-role
+        aws-region: us-east-1
     - name: Install dependencies # The first step that isn't just calling another action.
       run: |
         python -m pip install --upgrade pip # Upgrade pip to the latest version.
         pip install pytest # Install pytest.
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi # If we have a requirements.txt, then install it.
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest # Final action which runs pytest. If any test fails, then this Action fails.
       run: |
         pytest
