@@ -129,11 +129,11 @@ def test_read_root():
     assert response.json() == {"message": "Welcom to Income Prediction API"}
 
 def test_income_pred_api(inputincome = { "age": 30, "workclass": "State-gov",
-    "fnlwgt": 77516, "education": "Masters", "education_num": 15,
-    "marital_status": "Never-married", "occupation": "Prof-specialty",
+    "fnlwgt": 77516, "education": "Masters", "education-num": 15,
+    "marital-status": "Never-married", "occupation": "Prof-specialty",
     "relationship": "Not-in-family", "race": "White", "sex": "Female",
-    "capital_gain": 2174, "capital_loss": 0, "hours_per_week": 40,
-    "native_country": "United-States", "income": 1 }):
+    "capital-gain": 2174, "capital-loss": 0, "hours-per-week": 40,
+    "native-country": "United-States", "income": 1 }):
     response = client.post("/income_prediction", json=inputincome)
     assert response.status_code == 200
 
@@ -145,11 +145,21 @@ def test_income_pred_type():
         "description": "descriptiondescription",
     })
 
-def test_income_pred_value(inputincome = { "age": 30, "workclass": "State-gov",
-    "fnlwgt": 77516, "education": "Masters", "education_num": 15,
-    "marital_status": "Never-married", "occupation": "Prof-specialty",
+def test_income_pred_value0(inputincome = { "age": 30, "workclass": "State-gov",
+    "fnlwgt": 77516, "education": "Masters", "education-num": 15,
+    "marital-status": "Never-married", "occupation": "Prof-specialty",
     "relationship": "Not-in-family", "race": "White", "sex": "Female",
-    "capital_gain": 2174, "capital_loss": 0, "hours_per_week": 40,
-    "native_country": "United-States", "income": 1 }):
+    "capital-gain": 2174, "capital-loss": 0, "hours-per-week": 40,
+    "native-country": "United-States", "income": 1 }):
     response = client.post("/income_prediction", json=inputincome)
     assert response.json()['prediction'] == 0
+
+def test_income_pred_value1(inputincome = { "age": 38, "workclass": "Self-emp-inc",
+    "fnlwgt": 99146, "education": "Bachelors", "education-num": 13,
+    "marital-status": "Married-civ-spouse", "occupation": "Exec-managerial",
+    "relationship": "Husband", "race": "White", "sex": "Male",
+    "capital-gain": 15024, "capital-loss": 0, "hours-per-week": 80,
+    "native-country": "United-States", "income": 1 }):
+    response = client.post("/income_prediction", json=inputincome)
+    assert response.json()['prediction'] == 1
+

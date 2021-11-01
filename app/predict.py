@@ -11,7 +11,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, fbeta_score, recall_score, precision_score
 from sklearn.preprocessing import OneHotEncoder
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 DATAPATH = "./app/data/adult.data"
 TESTPATH = "./app/data/adult.test"
@@ -25,21 +25,21 @@ class Income(BaseModel):
     output:
         None
     """
-    age: int
-    workclass: str
-    fnlwgt: int
-    education: str
-    education_num: int
-    marital_status: str
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str
-    income: int
+    age: int = Field(..., example=45)
+    workclass: str = Field(..., example="State-gov")
+    fnlwgt: int = Field(..., example="77516")
+    education: str = Field(..., example="Bachelors")
+    education_num: int = Field(..., example=15, alias="education-num")
+    marital_status: str = Field(..., example="Never-married", alias="marital-status")
+    occupation: str = Field(..., example="Prof-specialty")
+    relationship: str = Field(..., example="Not-in-family")
+    race: str = Field(..., example="White")
+    sex: str = Field(..., example="Female")
+    capital_gain: int = Field(..., example=2174, alias="capital-gain")
+    capital_loss: int = Field(..., example=0, alias="capital-loss")
+    hours_per_week: int = Field(..., example=40, alias="hours-per-week")
+    native_country: str = Field(..., example="United-States", alias="native-country")
+    income: int = Field(..., example=1)
 
 
 def match_categories(data, data_test):

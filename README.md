@@ -67,28 +67,30 @@ API is defined by main.py
 ### Step4: Click Try it out
 ### Step5: Enter the following dictionary in Request body
 
+![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/example.png)
+
 {
   "age": 30,
   "workclass": "State-gov",
   "fnlwgt": 77516,
   "education": "Masters",
-  "education_num": 15,
-  "marital_status": "Never-married",
+  "education-num": 15,
+  "marital-status": "Never-married",
   "occupation": "Prof-specialty",
   "relationship": "Not-in-family",
   "race": "White",
   "sex": "Female",
-  "capital_gain": 2174,
-  "capital_loss": 0,
-  "hours_per_week": 40,
-  "native_country": "United-States",
+  "capital-gain": 2174,
+  "capital-loss": 0,
+  "hours-per-week": 40,
+  "native-country": "United-States",
   "income": 1
 }
 
 ### Step6: Click Execute
 ### Step7: Got to Server response for results
 
-![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/example.png)
+![alt text](https://github.com/vickyting0910/censusclassificationAPI/blob/main/images/outputexample.png)
 
 ## API Continuous Integration using GitHub Actions
 
